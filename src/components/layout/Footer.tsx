@@ -6,7 +6,6 @@ const footerLinks = {
     { name: '智能助手', href: '/assistants' },
     { name: '技術架構', href: '/tech-stack' },
     { name: '解決方案', href: '/solutions' },
-    { name: '案例展示', href: '/cases' },
   ],
   公司資訊: [
     { name: '關於我們', href: '/about' },

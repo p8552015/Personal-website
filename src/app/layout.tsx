@@ -13,22 +13,22 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "智慧製造 AI 解決方案 | Netflix 風格暗色系官網",
-  description: "結合 Line + MCP 智能小幫手與四層技術架構，打造全方位智慧製造解決方案。包含 AI 協作、即時資料分析、預測性維護和 AR/MR 應用。",
-  keywords: "智慧製造, AI, 人工智能, 製造業, 工業4.0, OT資料, RAG系統, 預測性維護, AR, MR, Line Bot, MCP",
-  authors: [{ name: "智慧製造團隊" }],
+  title: "MCP-AI 生成式智慧製造平台 | Agentic Orchestrator 驅動的五層架構",
+  description: "MCP-AI 採用五層架構（數據採集→標準化通訊→模組化工具→MCP 伺服器平台→生成式 AI 應用），透過 Agentic Orchestrator 實現 OEE 最大化、成本優化與知識保存。",
+  keywords: "MCP-AI, 生成式智慧製造, Agentic Orchestrator, 五層架構, OEE最大化, 成本優化, 知識保存, 工業4.0, 智慧製造, MCP伺服器, Tool-Sensor Hub, Tool-OPC Server, Tool-AR SOP",
+  authors: [{ name: "MCP-AI 團隊" }],
   viewport: "width=device-width, initial-scale=1",
   robots: "index, follow",
   openGraph: {
-    title: "智慧製造 AI 解決方案",
-    description: "結合 Line + MCP 智能小幫手與四層技術架構，打造全方位智慧製造解決方案",
+    title: "MCP-AI 生成式智慧製造平台",
+    description: "透過 Agentic Orchestrator 驅動的五層架構，實現 OEE 最大化、成本優化與知識保存",
     type: "website",
     locale: "zh_TW",
   },
   twitter: {
     card: "summary_large_image",
-    title: "智慧製造 AI 解決方案",
-    description: "結合 Line + MCP 智能小幫手與四層技術架構，打造全方位智慧製造解決方案",
+    title: "MCP-AI 生成式智慧製造平台",
+    description: "透過 Agentic Orchestrator 驅動的五層架構，實現 OEE 最大化、成本優化與知識保存",
   },
 };
 
@@ -45,11 +45,11 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased bg-black text-white`}
       >
-        <Navbar />
-        <main className="pt-16 min-h-screen">
-          {children}
-        </main>
-        <Footer />
+        <div className="flex flex-col min-h-screen">
+          <Navbar />
+          <main className="flex-grow">{children}</main>
+          <Footer />
+        </div>
       </body>
     </html>
   );

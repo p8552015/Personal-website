@@ -2,88 +2,87 @@
 
 import Link from 'next/link';
 import { useState } from 'react';
-import Container from '../ui/Container';
-import Button from '../ui/Button';
 
-const navigation = [
-  { name: '首頁', href: '/' },
-  { name: '智能助手', href: '/assistants' },
-  { name: '技術架構', href: '/tech-stack' },
-  { name: '解決方案', href: '/solutions' },
-  { name: '關於我們', href: '/about' },
+const navLinks = [
+  { href: '/architecture', label: '技術架構' },
+  { href: '/solutions', label: '解決方案' },
+  { href: '/use-cases', label: '應用範例' },
+  { href: '/assistants', label: 'AI 小幫手' },
+  { href: '/about', label: '關於我們' },
 ];
 
 export default function Navbar() {
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <nav className="fixed top-0 w-full bg-black/80 backdrop-blur-md z-50 border-b border-gray-800">
-      <Container>
-        <div className="flex justify-between items-center h-16">
-          {/* Logo */}
-          <Link href="/" className="flex items-center space-x-2">
-            <div className="w-10 h-10 bg-gradient-to-br from-red-600 to-red-700 rounded-lg flex items-center justify-center">
-              <span className="text-white font-bold text-xl">AI</span>
-            </div>
-            <span className="text-white font-bold text-xl hidden sm:block">智慧製造</span>
-          </Link>
-
-          {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-8">
-            {navigation.map((item) => (
-              <Link
-                key={item.name}
-                href={item.href}
-                className="text-gray-300 hover:text-white transition-colors duration-200"
-              >
-                {item.name}
-              </Link>
-            ))}
+    <nav className="sticky top-0 z-50 bg-black/70 backdrop-blur-lg border-b border-zinc-800">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex items-center justify-between h-16">
+          <div className="flex items-center">
+            <Link href="/" className="text-2xl font-bold text-red-600 hover:text-red-500 transition-colors">
+              MCP-AI
+            </Link>
           </div>
-
-          {/* CTA Button */}
           <div className="hidden md:block">
-            <Button variant="primary" size="sm">
-              免費諮詢
-            </Button>
-          </div>
-
-          {/* Mobile menu button */}
-          <button
-            className="md:hidden text-gray-300 hover:text-white"
-            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-          >
-            <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              {mobileMenuOpen ? (
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-              ) : (
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
-              )}
-            </svg>
-          </button>
-        </div>
-
-        {/* Mobile Navigation */}
-        {mobileMenuOpen && (
-          <div className="md:hidden py-4 border-t border-gray-800">
-            <div className="flex flex-col space-y-4">
-              {navigation.map((item) => (
+            <div className="ml-10 flex items-baseline space-x-4">
+              {navLinks.map((link) => (
                 <Link
-                  key={item.name}
-                  href={item.href}
-                  className="text-gray-300 hover:text-white transition-colors duration-200 py-2"
-                  onClick={() => setMobileMenuOpen(false)}
+                  key={link.href}
+                  href={link.href}
+                  className="text-gray-300 hover:bg-zinc-800 hover:text-white px-3 py-2 rounded-md text-sm font-medium transition-colors"
                 >
-                  {item.name}
+                  {link.label}
                 </Link>
               ))}
-              <Button variant="primary" size="md" className="w-full">
-                免費諮詢
-              </Button>
             </div>
           </div>
-        )}
-      </Container>
+          <div className="hidden md:block">
+             <a href="#contact" className="inline-block bg-red-600 hover:bg-red-700 text-white font-bold py-2 px-4 rounded transition-colors">
+               聯絡我們
+             </a>
+          </div>
+          <div className="-mr-2 flex md:hidden">
+            <button
+              onClick={() => setIsOpen(!isOpen)}
+              type="button"
+              className="bg-zinc-800 inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-zinc-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-zinc-800 focus:ring-white"
+              aria-controls="mobile-menu"
+              aria-expanded="false"
+            >
+              <span className="sr-only">Open main menu</span>
+              {isOpen ? (
+                <svg className="block h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+              ) : (
+                <svg className="block h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16" />
+                </svg>
+              )}
+            </button>
+          </div>
+        </div>
+      </div>
+
+      {isOpen && (
+        <div className="md:hidden" id="mobile-menu">
+          <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+            {navLinks.map((link) => (
+              <Link
+                key={link.href}
+                href={link.href}
+                className="text-gray-300 hover:bg-zinc-800 hover:text-white block px-3 py-2 rounded-md text-base font-medium transition-colors"
+                onClick={() => setIsOpen(false)}
+              >
+                {link.label}
+              </Link>
+            ))}
+            <a href="#contact" className="text-white bg-red-600 hover:bg-red-700 block px-3 py-2 rounded-md text-base font-medium text-center transition-colors" onClick={() => setIsOpen(false)}>
+               聯絡我們
+             </a>
+          </div>
+        </div>
+      )}
     </nav>
   );
 }

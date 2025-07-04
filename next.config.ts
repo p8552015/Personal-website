@@ -5,9 +5,11 @@ const nextConfig: NextConfig = {
   images: {
     unoptimized: true
   },
-  // 部署在 GitHub Pages 子路徑
-  basePath: '/Personal-website',
-  assetPrefix: '/Personal-website',
+  // 只在生產環境使用 basePath 和 assetPrefix
+  ...(process.env.NODE_ENV === 'production' && {
+    basePath: '/Personal-website',
+    assetPrefix: '/Personal-website',
+  }),
 };
 
 export default nextConfig;

@@ -10,7 +10,7 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           
           <div className="md:col-span-1">
-            <h3 className="text-2xl font-bold text-red-600">MCP-AI</h3>
+            <h3 className="text-2xl font-bold text-red-600">AI Agent</h3>
             <p className="mt-2 text-gray-400 text-sm">重定義智慧製造的未來。</p>
           </div>
 
@@ -42,7 +42,7 @@ export default function Footer() {
 
         </div>
         <div className="mt-8 border-t border-zinc-800 pt-8 text-center text-sm text-gray-400">
-          <p>&copy; {currentYear} MCP-AI. All rights reserved.</p>
+          <p>&copy; {currentYear} AI Agent. All rights reserved.</p>
         </div>
       </div>
     </footer>

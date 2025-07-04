@@ -23,7 +23,7 @@ export default function HeroNew() {
           </span>
         </div>
         <h1 className="text-4xl md:text-6xl font-bold leading-tight mb-6">
-          <span className="text-red-500">MCP-AI</span>
+          <span className="text-red-500">AI Agent</span>
           <br />
           生成式智慧製造平台
         </h1>

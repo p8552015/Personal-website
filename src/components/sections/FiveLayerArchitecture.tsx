@@ -1,7 +1,23 @@
+'use client';
+
 // src/components/sections/FiveLayerArchitecture.tsx
-import { FaDatabase, FaNetworkWired, FaCogs, FaServer, FaBrain } from 'react-icons/fa';
+import { FaDatabase, FaNetworkWired, FaCogs, FaServer, FaBrain, FaChevronDown, FaChevronUp } from 'react-icons/fa';
+import { useState } from 'react';
 
 export default function FiveLayerArchitecture() {
+  const [expandedLayers, setExpandedLayers] = useState(new Set([5])); // 預設展開 Layer 5
+  
+  const toggleLayer = (layerId: number) => {
+    setExpandedLayers(prev => {
+      const newSet = new Set(prev);
+      if (newSet.has(layerId)) {
+        newSet.delete(layerId);
+      } else {
+        newSet.add(layerId);
+      }
+      return newSet;
+    });
+  };
   const layers = [
     {
       id: 5,
@@ -74,16 +90,16 @@ export default function FiveLayerArchitecture() {
 
         <div className="relative">
           {/* 架構層級 */}
-          <div className="space-y-6">
+          <div className="space-y-10">
             {layers.map((layer, index) => (
               <div key={layer.id} className="relative">
                 {/* 連接線 */}
                 {index < layers.length - 1 && (
-                  <div className="absolute left-1/2 transform -translate-x-1/2 -bottom-3 w-0.5 h-6 bg-gradient-to-b from-gray-600 to-gray-700 z-10"></div>
+                  <div className="absolute left-1/2 transform -translate-x-1/2 -bottom-5 w-0.5 h-10 bg-gradient-to-b from-gray-600 to-gray-700 z-10"></div>
                 )}
                 
                 {/* 層級卡片 */}
-                <div className={`${layer.bgColor} ${layer.borderColor} border-2 rounded-xl p-6 transition-all duration-300 hover:scale-105 hover:shadow-2xl`}>
+                <div className={`${layer.bgColor} ${layer.borderColor} border-2 rounded-xl p-8 transition-all duration-300 hover:scale-[1.02] hover:shadow-2xl hover:shadow-${layer.color.split('-')[1]}-500/20`}>
                   <div className="flex items-center gap-6">
                     {/* 層級編號與圖標 */}
                     <div className="flex-shrink-0">
@@ -98,25 +114,55 @@ export default function FiveLayerArchitecture() {
                     {/* 層級內容 */}
                     <div className="flex-grow">
                       <div className="mb-4">
-                        <h3 className={`text-2xl font-bold ${layer.color} mb-1`}>
-                          {layer.title}
-                        </h3>
-                        <p className="text-gray-400 text-sm font-medium">
-                          {layer.subtitle}
-                        </p>
-                        <p className="text-gray-300 mt-2">
-                          {layer.description}
-                        </p>
+                        <div className="flex items-center justify-between">
+                          <div className="flex-grow">
+                            <h3 className={`text-2xl font-bold ${layer.color} mb-1`}>
+                              {layer.title}
+                            </h3>
+                            <p className="text-gray-400 text-sm font-medium">
+                              {layer.subtitle}
+                            </p>
+                            <p className="text-gray-300 mt-2">
+                              {layer.description}
+                            </p>
+                          </div>
+                          <button
+                            onClick={() => toggleLayer(layer.id)}
+                            className={`ml-4 p-2 rounded-full ${layer.bgColor} ${layer.color} hover:scale-110 transition-all duration-200`}
+                          >
+                            {expandedLayers.has(layer.id) ? <FaChevronUp /> : <FaChevronDown />}
+                          </button>
+                        </div>
                       </div>
 
-                      {/* 核心功能 */}
-                      <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
-                        {layer.items.map((item, itemIndex) => (
-                          <div key={itemIndex} className="bg-black/30 rounded-lg p-3 text-center">
-                            <span className="text-gray-300 text-sm font-medium">{item}</span>
+                      {/* 可展開的詳細內容 */}
+                      {expandedLayers.has(layer.id) && (
+                        <div className="transition-all duration-300 ease-in-out">
+                          {/* 分隔線 */}
+                          <div className={`w-full h-px bg-gradient-to-r from-transparent via-${layer.color.split('-')[1]}-500/30 to-transparent my-6`}></div>
+                          {/* Layer 5 專用圖片展示 */}
+                          {layer.id === 5 && (
+                            <div className="mb-6">
+                              <div className="w-full max-w-2xl mx-auto">
+                                <img 
+                                  src="/layer5.svg" 
+                                  alt="生成式 AI 應用展示"
+                                  className="w-full h-auto rounded-lg shadow-lg border border-purple-500/30"
+                                />
+                              </div>
+                            </div>
+                          )}
+
+                          {/* 核心功能 */}
+                          <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
+                            {layer.items.map((item, itemIndex) => (
+                              <div key={itemIndex} className="bg-black/30 rounded-lg p-3 text-center hover:bg-black/40 transition-colors duration-200">
+                                <span className="text-gray-300 text-sm font-medium">{item}</span>
+                              </div>
+                            ))}
                           </div>
-                        ))}
-                      </div>
+                        </div>
+                      )}
                     </div>
                   </div>
                 </div>
@@ -124,15 +170,7 @@ export default function FiveLayerArchitecture() {
             ))}
           </div>
 
-          {/* Agentic Orchestrator 核心標註 */}
-          <div className="absolute right-0 top-1/2 transform -translate-y-1/2 translate-x-full">
-            <div className="ml-8 bg-red-600/20 border border-red-500 rounded-lg p-4 max-w-xs">
-              <h4 className="text-red-400 font-bold mb-2">核心驅動</h4>
-              <p className="text-gray-300 text-sm">
-                Agentic Orchestrator 作為 MCP 伺服器平台的核心，智能編排各層間的數據流和工作流
-              </p>
-            </div>
-          </div>
+
         </div>
 
         {/* 數據流向說明 */}

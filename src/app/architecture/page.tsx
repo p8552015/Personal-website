@@ -55,7 +55,15 @@ const LayerDetail = ({ icon, title, subtitle, description, tools, children, laye
           <p className="text-gray-400 text-sm">Layer {layerNumber} 技術堆疊</p>
         </div>
         <div className="aspect-square bg-gradient-to-br from-zinc-800 to-zinc-900 rounded-xl flex items-center justify-center border border-zinc-600">
-          <div className={`text-6xl ${color} opacity-20`}>{icon}</div>
+          {layerNumber === 5 ? (
+            <img 
+              src="/layer5.svg" 
+              alt="Layer 5 技術堆疊圖示"
+              className="w-full h-full object-contain rounded-xl"
+            />
+          ) : (
+            <div className={`text-6xl ${color} opacity-20`}>{icon}</div>
+          )}
         </div>
       </div>
     </div>
@@ -71,7 +79,7 @@ export default function ArchitecturePage() {
         <header className="text-center mb-20">
           <div className="mb-6">
             <span className="inline-block px-4 py-2 bg-red-600/20 border border-red-500 rounded-full text-red-400 text-sm font-semibold">
-              MCP-AI 核心技術
+              AI Agent 核心技術
             </span>
           </div>
           <h1 className="text-5xl md:text-6xl font-bold mb-6">

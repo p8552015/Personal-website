@@ -67,7 +67,7 @@ export default function SolutionsPage() {
             </span>
           </div>
           <h1 className="text-5xl md:text-6xl font-bold mb-6">
-            <span className="text-red-500">MCP-AI</span> 業務價值方案
+            <span className="text-red-500">AI Agent</span> 業務價值方案
           </h1>
           <p className="text-xl md:text-2xl text-gray-400 max-w-4xl mx-auto mb-8">
             透過五層架構和智能編排，為您的企業帶來可衡量的、實質性的商業回報

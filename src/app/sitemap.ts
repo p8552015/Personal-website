@@ -1,7 +1,9 @@
 import { MetadataRoute } from 'next';
 
+export const dynamic = 'force-static';
+
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = 'https://smart-manufacturing.ai';
+  const baseUrl = 'https://p8552015.github.io/Personal-website';
   
   return [
     {

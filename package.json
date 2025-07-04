@@ -7,7 +7,9 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "test:browser": "python3 test-browser.py"
+    "test:browser": "python3 test-browser.py",
+    "export": "next build",
+    "deploy": "next build && touch out/.nojekyll && echo 'p8552015.github.io' > out/CNAME"
   },
   "dependencies": {
     "next": "15.3.5",

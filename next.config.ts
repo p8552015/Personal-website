@@ -36,10 +36,7 @@ const nextConfig: NextConfig = {
   }),
   
   // Cloudflare Pages 專用配置
-  ...(isCloudflarePages && {
-    // Cloudflare Pages 需要 trailingSlash 來正確處理靜態文件
-    trailingSlash: true,
-  }),
+  // 移除 trailingSlash 設定，讓 Cloudflare Pages 自行處理路由
 };
 
 export default nextConfig;

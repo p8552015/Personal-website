@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "next dev --turbopack",
     "build": "next build",
-    "build:cloudflare": "DEPLOY_TARGET=cloudflare next build",
+    "build:cloudflare": "DEPLOY_TARGET=cloudflare next build && cp _redirects out/",
     "build:github": "DEPLOY_TARGET=github next build",
     "build:optimize": "node scripts/build-optimize.js",
     "start": "next start",

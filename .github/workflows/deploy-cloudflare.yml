@@ -34,6 +34,7 @@ jobs:
         
       - name: Deploy to Cloudflare Pages
         uses: cloudflare/pages-action@v1
+        if: ${{ secrets.CLOUDFLARE_API_TOKEN != '' }}
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
@@ -41,3 +42,10 @@ jobs:
           directory: out
           # 可選：為 PR 建立預覽部署
           gitHubToken: ${{ secrets.GITHUB_TOKEN }}
+          
+      - name: Upload build artifacts (if no Cloudflare deployment)
+        uses: actions/upload-artifact@v4
+        if: ${{ secrets.CLOUDFLARE_API_TOKEN == '' }}
+        with:
+          name: build-output
+          path: out/

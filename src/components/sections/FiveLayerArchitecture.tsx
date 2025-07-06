@@ -3,6 +3,7 @@
 // src/components/sections/FiveLayerArchitecture.tsx
 import { FaDatabase, FaNetworkWired, FaCogs, FaServer, FaBrain, FaChevronDown, FaChevronUp } from 'react-icons/fa';
 import { useState } from 'react';
+import Image from 'next/image';
 
 import { getAssetPath } from '@/utils/getBasePath';
 
@@ -146,9 +147,11 @@ export default function FiveLayerArchitecture() {
                           {layer.id === 5 && (
                             <div className="mb-6">
                               <div className="w-full max-w-2xl mx-auto">
-                                <img 
+                                <Image 
                                   src={getAssetPath('/layer5.svg')} 
                                   alt="生成式 AI 應用展示"
+                                  width={800}
+                                  height={400}
                                   className="w-full h-auto rounded-lg shadow-lg border border-purple-500/30"
                                 />
                               </div>

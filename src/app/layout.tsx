@@ -35,6 +35,7 @@ export const viewport = "width=device-width, initial-scale=1";
 
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
+import PerformanceProvider from "@/components/PerformanceProvider";
 
 export default function RootLayout({
   children,
@@ -46,11 +47,13 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased bg-black text-white`}
       >
-        <div className="flex flex-col min-h-screen">
-          <Navbar />
-          <main className="flex-grow">{children}</main>
-          <Footer />
-        </div>
+        <PerformanceProvider>
+          <div className="flex flex-col min-h-screen">
+            <Navbar />
+            <main className="flex-grow">{children}</main>
+            <Footer />
+          </div>
+        </PerformanceProvider>
       </body>
     </html>
   );

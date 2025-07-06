@@ -3,41 +3,6 @@ import Card from '@/components/ui/Card';
 import Button from '@/components/ui/Button';
 import Badge from '@/components/ui/Badge';
 
-const team = [
-  {
-    name: "張志明",
-    position: "執行長暨技術長",
-    experience: "15年+ AI 研發經驗",
-    background: "台大資工博士，前 Google AI 研究員",
-    expertise: ["機器學習", "深度學習", "電腦視覺"],
-    avatar: "👨‍💼"
-  },
-  {
-    name: "李美華",
-    position: "技術副總",
-    experience: "12年+ 工業 4.0 經驗",
-    background: "清大工工博士，前台積電製程工程師",
-    expertise: ["智慧製造", "IoT", "數據分析"],
-    avatar: "👩‍💼"
-  },
-  {
-    name: "王大明",
-    position: "產品總監",
-    experience: "10年+ 產品管理經驗",
-    background: "交大資管碩士，前微軟產品經理",
-    expertise: ["產品策略", "UX設計", "敏捷開發"],
-    avatar: "👨‍💻"
-  },
-  {
-    name: "陳小美",
-    position: "解決方案架構師",
-    experience: "8年+ 企業諮詢經驗",
-    background: "政大企管碩士，McKinsey 前顧問",
-    expertise: ["企業轉型", "流程優化", "策略規劃"],
-    avatar: "👩‍💻"
-  }
-];
-
 const values = [
   {
     title: "創新驅動",
@@ -58,39 +23,6 @@ const values = [
     title: "持續學習",
     description: "緊跟技術趨勢，不斷提升專業能力",
     icon: "📚"
-  }
-];
-
-const milestones = [
-  {
-    year: "2019",
-    title: "公司成立",
-    description: "由台灣頂尖 AI 人才創立，專注智慧製造領域"
-  },
-  {
-    year: "2020",
-    title: "首個大型專案",
-    description: "與台積電合作，成功導入 AI 品質檢測系統"
-  },
-  {
-    year: "2021",
-    title: "技術突破",
-    description: "開發出業界領先的預測性維護演算法"
-  },
-  {
-    year: "2022",
-    title: "市場擴展",
-    description: "服務客戶突破 50 家，涵蓋多個產業"
-  },
-  {
-    year: "2023",
-    title: "國際認證",
-    description: "獲得 ISO 27001 資安認證及多項技術專利"
-  },
-  {
-    year: "2024",
-    title: "智能升級",
-    description: "推出新一代 AI 平台，整合 MCP 協議"
   }
 ];
 
@@ -170,78 +102,6 @@ export default function AboutPage() {
         </Container>
       </section>
 
-      {/* Team */}
-      <section className="py-20">
-        <Container>
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">專業團隊</h2>
-            <p className="text-gray-300">來自頂尖企業的 AI 專家團隊</p>
-          </div>
-          
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {team.map((member, index) => (
-              <Card key={index} className="text-center h-full">
-                <div className="space-y-4">
-                  <div className="text-6xl">{member.avatar}</div>
-                  <div>
-                    <h3 className="text-xl font-semibold text-white mb-1">{member.name}</h3>
-                    <p className="text-red-500 font-medium text-sm mb-2">{member.position}</p>
-                    <p className="text-gray-400 text-xs mb-3">{member.background}</p>
-                    <Badge variant="success" size="sm" className="mb-3">
-                      {member.experience}
-                    </Badge>
-                  </div>
-                  <div>
-                    <p className="text-xs text-gray-400 mb-2">專業領域：</p>
-                    <div className="flex flex-wrap gap-1 justify-center">
-                      {member.expertise.map((skill, idx) => (
-                        <span 
-                          key={idx}
-                          className="text-xs px-2 py-1 bg-gray-800 text-gray-300 rounded-full"
-                        >
-                          {skill}
-                        </span>
-                      ))}
-                    </div>
-                  </div>
-                </div>
-              </Card>
-            ))}
-          </div>
-        </Container>
-      </section>
-
-      {/* Timeline */}
-      <section className="py-20 bg-gradient-to-r from-transparent to-red-950/10">
-        <Container>
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">發展歷程</h2>
-            <p className="text-gray-300">從初創到領先的成長軌跡</p>
-          </div>
-          
-          <div className="max-w-4xl mx-auto">
-            <div className="space-y-8">
-              {milestones.map((milestone, index) => (
-                <div key={index} className="flex items-start gap-6">
-                  <div className="flex-shrink-0">
-                    <div className="w-16 h-16 bg-red-600 rounded-full flex items-center justify-center">
-                      <span className="text-white font-bold">{milestone.year}</span>
-                    </div>
-                  </div>
-                  <Card className="flex-1">
-                    <div>
-                      <h3 className="text-xl font-semibold text-white mb-2">
-                        {milestone.title}
-                      </h3>
-                      <p className="text-gray-300">{milestone.description}</p>
-                    </div>
-                  </Card>
-                </div>
-              ))}
-            </div>
-          </div>
-        </Container>
-      </section>
 
       {/* Stats */}
       <section className="py-20">

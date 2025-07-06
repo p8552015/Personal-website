@@ -8,6 +8,7 @@ const navLinks = [
   { href: '/solutions', label: '解決方案' },
   { href: '/use-cases', label: '應用範例' },
   { href: '/assistants', label: 'AI 小幫手' },
+  { href: '/experience', label: '個人經歷' },
   { href: '/about', label: '關於我們' },
 ];
 

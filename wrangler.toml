@@ -2,8 +2,8 @@
 # 這個文件用於 Wrangler CLI 部署
 
 name = "smart-manufacturing-website"
-compatibility_date = "2024-01-01"
-compatibility_flags = ["nodejs_compat"]
+# 注意：Pages 部署不需要 compatibility_date 和 compatibility_flags
+# 這些配置僅用於 Cloudflare Workers
 
 [build]
 command = "npm run build:cloudflare"

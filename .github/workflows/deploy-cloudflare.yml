@@ -29,8 +29,8 @@ jobs:
       - name: Run type checking
         run: npm run type-check
         
-      - name: Build project
-        run: npm run build
+      - name: Build project for Cloudflare Pages
+        run: npm run build:cloudflare
         
       - name: Deploy to Cloudflare Pages
         uses: cloudflare/pages-action@v1

@@ -5,6 +5,8 @@
   "scripts": {
     "dev": "next dev --turbopack",
     "build": "next build && cp _redirects out/",
+    "build:cloudflare": "DEPLOY_TARGET=cloudflare next build && cp _redirects out/",
+    "build:github": "DEPLOY_TARGET=github next build && cp _redirects out/",
     "build:optimize": "node scripts/build-optimize.js",
     "start": "next start",
     "lint": "next lint",
@@ -12,9 +14,9 @@
     "type-check": "tsc --noEmit",
     "test:browser": "python3 test-browser.py",
     "export": "next build",
-    "deploy": "next build && cp _redirects out/",
-    "deploy:cloudflare": "next build && cp _redirects out/ && npx wrangler pages deploy out --project-name=YOUR_PROJECT_NAME",
-    "deploy:github": "next build && cp _redirects out/ && touch out/.nojekyll && echo 'p8552015.github.io' > out/CNAME",
+    "deploy": "npm run build:cloudflare",
+    "deploy:cloudflare": "npm run build:cloudflare && npx wrangler pages deploy out --project-name=personal-website",
+    "deploy:github": "npm run build:github && touch out/.nojekyll && echo 'p8552015.github.io' > out/CNAME",
     "analyze": "ANALYZE=true npm run build",
     "clean": "rm -rf .next out node_modules/.cache",
     "auto-commit": "node scripts/auto-commit.js"

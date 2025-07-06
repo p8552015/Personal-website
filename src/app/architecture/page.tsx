@@ -57,7 +57,7 @@ const LayerDetail = ({ icon, title, subtitle, description, tools, children, laye
         <div className="aspect-square bg-gradient-to-br from-zinc-800 to-zinc-900 rounded-xl flex items-center justify-center border border-zinc-600">
           {layerNumber === 5 ? (
             <img 
-              src="/layer5.svg" 
+              src={`${process.env.NODE_ENV === 'production' ? '/Personal-website' : ''}/layer5.svg`} 
               alt="Layer 5 技術堆疊圖示"
               className="w-full h-full object-contain rounded-xl"
             />

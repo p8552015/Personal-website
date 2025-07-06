@@ -145,7 +145,7 @@ export default function FiveLayerArchitecture() {
                             <div className="mb-6">
                               <div className="w-full max-w-2xl mx-auto">
                                 <img 
-                                  src="/layer5.svg" 
+                                  src={`${process.env.NODE_ENV === 'production' ? '/Personal-website' : ''}/layer5.svg`} 
                                   alt="生成式 AI 應用展示"
                                   className="w-full h-auto rounded-lg shadow-lg border border-purple-500/30"
                                 />

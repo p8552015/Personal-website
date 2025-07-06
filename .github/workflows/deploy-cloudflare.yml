@@ -37,7 +37,7 @@ jobs:
         
       - name: Deploy to Cloudflare Pages
         uses: cloudflare/wrangler-action@v3
-        if: ${{ github.event_name == 'push' && secrets.CLOUDFLARE_API_TOKEN != '' }}
+        if: github.event_name == 'push'
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}

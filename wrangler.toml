@@ -1,11 +1,12 @@
 # Cloudflare Pages 專案配置
-# 這個文件用於 Wrangler CLI 部署（可選）
+# 這個文件用於 Wrangler CLI 部署
 
 name = "smart-manufacturing-website"
 compatibility_date = "2024-01-01"
+compatibility_flags = ["nodejs_compat"]
 
 [build]
-command = "npm run build"
+command = "npm run build:cloudflare"
 publish = "out"
 
 # 環境變數配置
@@ -15,6 +16,5 @@ publish = "out"
 [env.preview]
 # 在這裡設置預覽環境的環境變數
 
-# 自訂路由規則已移除
-# Next.js 靜態導出會生成所有必要的 HTML 文件
-# Cloudflare Pages 會自動處理這些靜態文件
+# Next.js 靜態導出配置
+# Cloudflare Pages 會自動處理靜態文件和路由

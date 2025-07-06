@@ -5,11 +5,9 @@ const nextConfig: NextConfig = {
   images: {
     unoptimized: true
   },
-  // 只在生產環境使用 basePath 和 assetPrefix
-  ...(process.env.NODE_ENV === 'production' && {
-    basePath: '/Personal-website',
-    assetPrefix: '/Personal-website',
-  }),
+  // Cloudflare Pages 不需要 basePath 和 assetPrefix
+  // 移除 GitHub Pages 特定的配置
+  
   // 效能監控配置
   serverExternalPackages: ['web-vitals'],
   // 開發環境效能監控
@@ -26,6 +24,10 @@ const nextConfig: NextConfig = {
     // 啟用 gzip 壓縮
     poweredByHeader: false,
   }),
+  // Cloudflare Pages 特定配置
+  trailingSlash: false,
+  // 確保路由正確處理
+  skipTrailingSlashRedirect: true,
 };
 
 export default nextConfig;

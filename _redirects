@@ -1,0 +1,11 @@
+# Cloudflare Pages 重定向規則
+# 確保 Next.js 路由正常工作
+
+# 處理 Next.js 靜態路由
+/*    /index.html   200
+
+# 處理 API 路由（如果有的話）
+/api/*  /api/404.html  404
+
+# 處理 404 頁面
+/*      /404.html     404

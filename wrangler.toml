@@ -2,12 +2,10 @@
 # 這個文件用於 Wrangler CLI 部署
 
 name = "smart-manufacturing-website"
-# 注意：Pages 部署不需要 compatibility_date 和 compatibility_flags
-# 這些配置僅用於 Cloudflare Workers
+pages_build_output_dir = "out"
 
-[build]
-command = "npm run build:cloudflare"
-publish = "out"
+# 使用新的 pages_build_output_dir 配置格式
+# 不再需要 [build] 區塊，因為 Pages 部署直接使用預建的靜態檔案
 
 # 環境變數配置
 [env.production]

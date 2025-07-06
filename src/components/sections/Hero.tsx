@@ -1,5 +1,7 @@
 import Link from 'next/link';
 
+import { getAssetPath } from '@/utils/getBasePath';
+
 export default function Hero() {
   return (
     <section className="relative min-h-screen flex items-center justify-center bg-gradient-to-br from-black via-zinc-900 to-red-900 overflow-hidden">
@@ -7,7 +9,7 @@ export default function Hero() {
       <div 
         className="absolute inset-0 bg-center opacity-10"
         style={{ 
-          backgroundImage: `url('${process.env.NODE_ENV === 'production' ? '/Personal-website' : ''}/grid.svg')` 
+          backgroundImage: `url('${getAssetPath('/grid.svg')}')` 
         }}
       ></div>
       <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>

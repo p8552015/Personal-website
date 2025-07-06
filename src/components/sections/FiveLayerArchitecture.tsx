@@ -4,6 +4,8 @@
 import { FaDatabase, FaNetworkWired, FaCogs, FaServer, FaBrain, FaChevronDown, FaChevronUp } from 'react-icons/fa';
 import { useState } from 'react';
 
+import { getAssetPath } from '@/utils/getBasePath';
+
 export default function FiveLayerArchitecture() {
   const [expandedLayers, setExpandedLayers] = useState(new Set([5])); // 預設展開 Layer 5
   
@@ -145,7 +147,7 @@ export default function FiveLayerArchitecture() {
                             <div className="mb-6">
                               <div className="w-full max-w-2xl mx-auto">
                                 <img 
-                                  src={`${process.env.NODE_ENV === 'production' ? '/Personal-website' : ''}/layer5.svg`} 
+                                  src={getAssetPath('/layer5.svg')} 
                                   alt="生成式 AI 應用展示"
                                   className="w-full h-auto rounded-lg shadow-lg border border-purple-500/30"
                                 />

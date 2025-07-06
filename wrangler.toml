@@ -15,9 +15,6 @@ publish = "out"
 [env.preview]
 # 在這裡設置預覽環境的環境變數
 
-# 自訂路由規則（可選）
-[[redirects]]
-from = "/*"
-to = "/index.html"
-status = 200
-# 這個規則確保 SPA 路由正常工作
+# 自訂路由規則已移除
+# Next.js 靜態導出會生成所有必要的 HTML 文件
+# Cloudflare Pages 會自動處理這些靜態文件
